@@ -11,6 +11,10 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    required: true,
+  }
 });
 
 export const BlogModel = model("Blog", blogSchema);

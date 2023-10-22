@@ -26,6 +26,7 @@ export function View() {
           >
             <h2 style={{margin: "0.2rem"}}>{post.title}</h2>
             <div>{post.content}</div>
+            <div>{post.date}</div>
           </div>
         ))}
       </div>

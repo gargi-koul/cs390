@@ -16,7 +16,7 @@ router.post("/create-post", async (req, res) => {
   // body should be JSON
   const body = req.body;
   // create blog model with the request body
-  const blog = new BlogModel({content: body.content, title: body.title});
+  const blog = new BlogModel({content: body.content, title: body.title, date: body.date});
   // remember to await .save();
   // save to mongodb
   await blog.save();
