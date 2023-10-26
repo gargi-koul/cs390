@@ -1,22 +1,35 @@
-import {useEffect} from "react";
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import moment from 'moment';
 
 export function View() {
   const [posts, setPosts] = useState([]);
+
   useEffect(() => {
-    (async function () {
-      const req = await fetch("http://localhost:3000/blog/");
-      const json = await req.json();
-      setPosts(json);
-    })();
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/blog/");
+        if (response.ok) {
+          const data = await response.json();
+          setPosts(data);
+        } else {
+          console.error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error("Error while fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
+
   return (
     <div>
-      <Link to="/"> Home</Link>
+      <Link to="/">Home</Link>
       <div>
         {posts.map((post) => (
           <div
+            key={post.id} // Add a unique key for each post if available
             style={{
               border: "2px solid",
               width: "50vw",
@@ -24,9 +37,9 @@ export function View() {
               textAlign: "center",
             }}
           >
-            <h2 style={{margin: "0.2rem"}}>{post.title}</h2>
+            <h2 style={{ margin: "0.2rem" }}>{post.title}</h2>
             <div>{post.content}</div>
-            <div>{post.date}</div>
+            <div>{moment(post.date).format('MM/DD/YY')}</div> {/* Format the date using moment.js */}
           </div>
         ))}
       </div>
