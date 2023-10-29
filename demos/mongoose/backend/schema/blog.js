@@ -23,7 +23,20 @@ const blogSchema = new Schema({
   rating: {
     type: Number,
     required: true,
+  },
+  diff: {
+    type: Number,
+    required: true,
+  },
+  recc: {
+    type: String,
+    required: true,
+  },
+  useful: {
+    type: String,
+    required: true,
   }
+
 });
 
 export const BlogModel = model("Blog", blogSchema);

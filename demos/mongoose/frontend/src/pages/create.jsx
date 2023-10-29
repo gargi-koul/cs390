@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 
 export function Create() {
@@ -44,10 +44,21 @@ export function Create() {
   const [content, setContent] = useState("");
   const [done, setDone] = useState(false);
   const [date, setDate] = useState("");
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState();
+  const [diff, setDiff] = useState();
+  const [recc, setRecc] = useState("Yes");
+  const [useful, setUseful] = useState("Yes");
+
+  useEffect(() => {
+    // When the component mounts, set the date to today's date
+    const today = new Date();
+    const formattedDate = today.toISOString().split("T")[0];
+    setDate(formattedDate);
+  }, []);
+  
   function handleSubmit(e) {
     e.preventDefault();
-    const requestData = JSON.stringify({title, prof, content, date, rating});
+    const requestData = JSON.stringify({title, prof, content, date, rating, diff, useful, recc});
     const headers = {"content-type": "application/json"};
     fetch("http://localhost:3000/blog/create-post", {method:"post", body:requestData,headers})
     .then(() => {
@@ -86,13 +97,22 @@ export function Create() {
           ))}
         </select>
       <div>
-      <p>Rating 1-5</p>
+      <label>Rating 1-5</label>
       <input
   type="number"
   min="1"
   max="5"
   value={rating}
   onChange={(e) => setRating(e.currentTarget.value)}
+></input>
+<div></div>
+<label>Difficulty 1-5</label>
+<input
+  type="number"
+  min="1"
+  max="5"
+  value={diff}
+  onChange={(e) => setDiff(e.currentTarget.value)}
 
 ></input>
       </div>
@@ -104,11 +124,19 @@ export function Create() {
         ></textarea>
       </div>
       <div>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.currentTarget.value)}
-        ></input>
+      <label>Useful?</label>
+      <select value={useful} onChange={(e) => setUseful(e.currentTarget.value)}>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <div>
+      <label>Reccomend?</label>
+      <select value={recc} onChange={(e) => setRecc(e.currentTarget.value)}>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      </div>
+        
       </div>
       <button>Post</button>
     </form>
