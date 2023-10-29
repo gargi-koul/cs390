@@ -38,6 +38,7 @@ export function View() {
             }}
           >
             <h2 style={{ margin: "0.2rem" }}>{post.title}</h2>
+            <div>Rating: {post.rating}/5</div>
             <div>{post.content}</div>
             <div>{moment(post.date).format('MM/DD/YY')}</div> {/* Format the date using moment.js */}
           </div>
