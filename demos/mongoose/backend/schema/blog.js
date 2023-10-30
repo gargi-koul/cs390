@@ -5,19 +5,13 @@ const blogSchema = new Schema({
   title: {
     type: String,
     required: true,
-    unique: false,
   },
   prof: {
     type: String,
     required: true,
-    unique: false,
   },
   content: {
     type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
     required: true,
   },
   rating: {

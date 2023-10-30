@@ -45,7 +45,7 @@ export function View() {
 
             <div>Review: {post.content}</div>
             
-            <div>Date of Review: {moment(post.date).format('MM/DD/YY')}</div> {/* Format the date using moment.js */}
+            {/* <div>Date of Review: {moment(post.date).format('MM/DD/YY')}</div> Format the date using moment.js */}
           </div>
         ))}
       </div>

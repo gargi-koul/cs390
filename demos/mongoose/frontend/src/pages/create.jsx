@@ -1,6 +1,6 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {Link} from "react-router-dom";
-
+// import { useEffect } from "react";
 export function Create() {
   const classes = [
   'CS 34800	Information Systems',
@@ -43,21 +43,21 @@ export function Create() {
   const [prof, setProf] = useState("");
   const [content, setContent] = useState("");
   const [done, setDone] = useState(false);
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
   const [rating, setRating] = useState();
   const [diff, setDiff] = useState();
   const [recc, setRecc] = useState("Yes");
 
-  useEffect(() => {
-    // When the component mounts, set the date to today's date
-    const today = new Date();
-    const formattedDate = today.toISOString().split("T")[0];
-    setDate(formattedDate);
-  }, []);
+  // useEffect(() => {
+  //   // When the component mounts, set the date to today's date
+  //   const today = new Date();
+  //   const formattedDate = today.toISOString().split("T")[0];
+  //   setDate(formattedDate);
+  // }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
-    const requestData = JSON.stringify({title, prof, content, date, rating, diff, recc});
+    const requestData = JSON.stringify({title, prof, content, rating, diff, recc});
     const headers = {"content-type": "application/json"};
     fetch("http://localhost:3000/blog/create-post", {method:"post", body:requestData,headers})
     .then(() => {
