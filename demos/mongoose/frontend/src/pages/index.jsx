@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 export function Index() {
   return (
     <div>
-      <h1>Welcome to ScreenScore!</h1>
+      <h1>Welcome to DB Track Rater!</h1>
       <div>
         <Link to="/create">Create Review</Link>
       </div>
