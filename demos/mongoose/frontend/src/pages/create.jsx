@@ -47,7 +47,6 @@ export function Create() {
   const [rating, setRating] = useState();
   const [diff, setDiff] = useState();
   const [recc, setRecc] = useState("Yes");
-  const [useful, setUseful] = useState("Yes");
 
   useEffect(() => {
     // When the component mounts, set the date to today's date
@@ -55,10 +54,10 @@ export function Create() {
     const formattedDate = today.toISOString().split("T")[0];
     setDate(formattedDate);
   }, []);
-  
+
   function handleSubmit(e) {
     e.preventDefault();
-    const requestData = JSON.stringify({title, prof, content, date, rating, diff, useful, recc});
+    const requestData = JSON.stringify({title, prof, content, date, rating, diff, recc});
     const headers = {"content-type": "application/json"};
     fetch("http://localhost:3000/blog/create-post", {method:"post", body:requestData,headers})
     .then(() => {
@@ -124,11 +123,6 @@ export function Create() {
         ></textarea>
       </div>
       <div>
-      <label>Useful?</label>
-      <select value={useful} onChange={(e) => setUseful(e.currentTarget.value)}>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
       <div>
       <label>Reccomend?</label>
       <select value={recc} onChange={(e) => setRecc(e.currentTarget.value)}>

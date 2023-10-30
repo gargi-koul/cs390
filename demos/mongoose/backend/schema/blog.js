@@ -32,10 +32,7 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
-  useful: {
-    type: String,
-    required: true,
-  }
+  
 
 });
 

@@ -40,8 +40,7 @@ export function View() {
             <h2 style={{ margin: "0.2rem" }}>{post.title}</h2>
             <div>Professor: {post.prof}</div>
             <div>Rating: {post.rating}/5</div>
-            <div>Difficulty: {post.diff}</div>
-            <div>Useful? {post.useful}</div>
+            <div>Difficulty: {post.diff}/5</div>
             <div>Reccomend? {post.recc}</div>
 
             <div>Review: {post.content}</div>
