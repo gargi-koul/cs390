@@ -25,7 +25,7 @@ export function View() {
 
   return (
     <div>
-      <Link to="/">Home</Link>
+      <Link to="/">Exit</Link>
       <div>
         {posts.map((post) => (
           <div

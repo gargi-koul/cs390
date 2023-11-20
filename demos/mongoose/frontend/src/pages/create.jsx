@@ -69,7 +69,8 @@ export function Create() {
   if (done) {
     return (
       <div>
-        <Link to="/view">Check out your review!</Link>
+        <p>You sucessfully created your review</p>
+        <Link to="/view">See Reviews</Link>
       </div>
     );
   }
